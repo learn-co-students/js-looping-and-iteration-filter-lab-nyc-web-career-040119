@@ -1,44 +1,45 @@
 // Code your solution in this file
 const drivers = ['Bobby', 'Sammy', 'Sally', 'Annette', 'Sarah', 'Bobby'];
-//
-// function findMatching(list, name) {
-//   let results=[];
-//   let matchCount;
-//   matchCount = nameMatcher(list, n)
-//   return results;
-// }
-function matchName(drivers, name) {
-  const matchArr =[];
+
+function findMatching(drivers, name) {
+  let matchArr =[];
   for (let i=0; i < drivers.length; i++) {
-    if (drivers[i] === 'name') {
-      matchArr.push(`${drivers[i]}`)
+    let driverName = drivers[i];
+    if (driverName === name) {
+      matchArr = matchArr.concat(`${driverName}`);
+    } else if (driverName.toLowerCase() === name.toLowerCase()) {
+      matchArr = matchArr.concat(`${driverName}`);
     }
   }
   return matchArr;
 }
-// findMatching-1. Iterate through array, find matching names and return count
 
 
 
-function fuzzyMatch(list, letters) {
-  // fuzzyMatch-1. Iterate through list
-}
-console.log(Object.keys(drivers));
-function stringToArray(str) {
-  var i = 0,
-    arr = [],
-    codePoint;
-  while (!isNaN(codePoint = knownCharCodeAt(str, i))) {
-    arr.push(String.fromCodePoint(codePoint));
-    i++;
+
+function fuzzyMatch(list, string) {
+  let stringLength = string.length;
+  let fuzzyArr = [];
+
+  for (let i=0; i<list.length;i++) {
+    let word = list[i];
+    let letters = word.slice(0, stringLength);
+    if (letters === string) {
+      fuzzyArr = fuzzyArr.concat(`${word}`);
+    }
   }
-  return arr;
+  return fuzzyArr;// fuzzyMatch-1. Iterate through list
 }
-//let arr = [...str];
-//let arr = str.split(/(?!$)/u;
 
-// fuzzyMatch-2. function to divide words into array of individual letters then join back together depending on letters.length.
-// while loop is probably best
 
-// console.log(Object.keys(drivers));
-matchName(drivers, 'Bobby');
+function matchName(driversArr, name) {
+  let nameArr = [];
+  for (let object of driversArr) {
+      let nameCheck = Object.values(object).indexOf(name) >= 0
+      if (nameCheck===true) {
+        nameArr = nameArr.concat(object)
+      }
+    }
+    return nameArr;
+
+}
